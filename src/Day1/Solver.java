@@ -9,7 +9,10 @@ import java.io.File;
 
 public class Solver {
     public static void main(String[] args) throws IOException {
-        Walker paul = new Walker(0,0,0);
+        int initialX = 0;
+        int initialY = 0;
+        int initialDirection = 0;
+        Walker paul = new Walker(initialDirection,initialX,initialY);
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(new File("src/Day1/input.txt")));
