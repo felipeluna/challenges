@@ -31,7 +31,6 @@ class Decoder {
         char[] chars = n.toCharArray();
         Arrays.sort(chars);
         String sorted = new String(chars);
-//        System.out.println(sorted);
 
         for (char c : sorted.toCharArray()) {
             int count = hmap.containsKey(c) ? hmap.get(c) : 0;
@@ -39,7 +38,6 @@ class Decoder {
         }
         // from https://github.com/chasehaddleton/AdventofCode-2016/blob/master/src/com/chasehaddleton/adventofcode/y2016/dayFour.java
         List<Character> keys = hmap.entrySet().stream()
-                .filter(ele -> !(ele.getKey() == '-')) // Remove the dashes
                 .sorted((o1, o2) -> { // sort based off highest value first, then alphabetically by key
                     if (o1.getValue() < o2.getValue()) return 1;
                     if (o1.getValue() > o2.getValue()) return -1;
@@ -64,25 +62,28 @@ class Decoder {
             return 0;
         }
     }
-    void north(){
+    int north(){
         HashMap<Character, Integer> hmap = new HashMap<>();
         String[] parts = this.raw.split("\\[");
-        String msg = parts[0];
-//
-//
-//        String left = parts[parts.length - 1];
-//        String[] vals = left.split("\\[");
-//        int checksum = Integer.parseInt(vals[0]);
-//        String code = vals[1].split("\\]")[0];
-//        parts = Arrays.copyOf(parts, parts.length - 1);
-//
-//
-//        StringBuilder builder = new StringBuilder();
-//        for (String s : parts) {
-//            builder.append(s);
-//        }
-//        String n = builder.toString();
-        System.out.println(msg);
+        String msg = parts[0].substring(0, parts[0].length()-4);
+        int code = Integer.parseInt(parts[0].substring(parts[0].length()-3, parts[0].length()));
+        StringBuilder sb = new StringBuilder();
+        for(char c : msg.toCharArray()){
+            if(c != '-'){
+                char n = (char) ((c + code - (int)'a') % 26 + (int)'a');
+                sb.append(n);
+            }else{
+                sb.append(" ");
+            }
+        }
+        String result = sb.toString();
+        System.out.println(result);
+        if(result.contains("north")){
+            return code;
+        }else{
+            return 0;
+        }
+
     }
 }
 

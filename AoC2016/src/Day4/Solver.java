@@ -8,11 +8,13 @@ public class Solver {
         String line;
         Decoder d;
         int counter = 0;
+        int northCounter = 0;
         while ((line = br.readLine()) != null){
             d = new Decoder(line);
             counter += d.decode();
-            d.north();
+            northCounter += d.north();
         }
         System.out.println(counter);
+        System.out.println(northCounter);
     }
 }
