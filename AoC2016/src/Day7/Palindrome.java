@@ -12,6 +12,10 @@ class Palindrome {
     }
 
     boolean isPalindrome(){
+        String[] strs = this.code.split("[|]");
+        for (String s : strs){
+            System.out.println(s);
+        }
         return false;
     }
 }
