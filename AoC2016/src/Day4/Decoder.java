@@ -36,8 +36,10 @@ class Decoder {
             int count = hmap.containsKey(c) ? hmap.get(c) : 0;
             hmap.put(c, count + 1);
         }
+        System.out.println(hmap.entrySet());
         // from https://github.com/chasehaddleton/AdventofCode-2016/blob/master/src/com/chasehaddleton/adventofcode/y2016/dayFour.java
-        List<Character> keys = hmap.entrySet().stream()
+        List<Character> keys = hmap.entrySet()
+                .stream()
                 .sorted((o1, o2) -> { // sort based off highest value first, then alphabetically by key
                     if (o1.getValue() < o2.getValue()) return 1;
                     if (o1.getValue() > o2.getValue()) return -1;
