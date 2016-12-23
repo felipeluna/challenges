@@ -13,19 +13,29 @@ public class Solver {
         BufferedReader br = new BufferedReader(new FileReader(new File("src/Day7/input.txt")));
         String line;
         String input = "abba[mnop]qrst";
-        Matcher m = Pattern.compile("(?!\\[(.*?)\\])").matcher(input);
+        Matcher m = Pattern.compile("\\[[^\\]]*\\]|(\\b\\w+\\b)").matcher(input);
+        int counter = 0;
         while(m.find()){
-            System.out.println(m.group(1));
+            if(m.group().startsWith("[")){
+                String middle = m.group().substring(1, m.group().length()-1);
+                 // if middle is palindrome
+                char[] middleChar = middle.toCharArray();
+                for (int i = 0; i < middleChar.length/2; i++) {
+                    if(middleChar[i] != middleChar[middleChar.length - 1 - i]){
+                        break;
+                    }
+                }
+            }else{
+                String middle = m.group().substring(1, m.group().length()-1);
+                // if middle is palindrome
+                char[] middleChar = middle.toCharArray();
+                for (int i = 0; i < middleChar.length/2; i++) {
+                    if(middleChar[i] != middleChar[middleChar.length - 1 - i]){
+                        counter++;
+                        break;
+                    }
+                }
+            }
         }
-
-//        for(String s : "abba[mnop]qrst".split("\\[(.*[^]])\\]")){
-//            System.out.println(s);
-//        }
-
-//        Palindrome pal = new Palindrome("abba[mnop]qrst");
-//        pal.isPalindrome();
-//        while((line = br.readLine()) != null){
-//
-//        }
     }
 }
