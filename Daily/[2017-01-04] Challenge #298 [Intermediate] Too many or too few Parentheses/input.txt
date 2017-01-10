@@ -1,0 +1,8 @@
+)(asdf)))
+((((asdf)))
+((((asdf))
+(ab)((cd)(asdf)))
+(ab)((cd)(asdf)())
+(ab)(((cd)(asdf)
+(ab)(((cd)(asdf
+(ab)(((cd)(asdf)))))
